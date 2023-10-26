@@ -5,8 +5,7 @@ const TrendingFilm = async () => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTA5NTU2YzhhYzAyYzFkNjBmMzAxYmNhYjBkYWQ0YSIsInN1YiI6IjYzYWIzOGMwYzU2ZDJkMDA5NmQxY2MzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l-BpeH-Ah7Wi9t70Rz04j-Mtg9263XYGP2ZKNR9qT2A",
+      Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
     },
   });
   const trending_movie = await response.json();
