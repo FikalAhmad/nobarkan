@@ -1,13 +1,14 @@
 import Image from "next/image";
 import React from "react";
+import rating from "@/app/assets/icons/star.png";
 
 interface DataFilm {
   title: string;
   image: string;
-  release_date: string;
+  vote_average: string;
 }
 
-const FilmList: React.FC<DataFilm> = ({ title, image, release_date }) => {
+const FilmList: React.FC<DataFilm> = ({ title, image, vote_average }) => {
   return (
     <div>
       <Image
@@ -17,7 +18,12 @@ const FilmList: React.FC<DataFilm> = ({ title, image, release_date }) => {
         height={200}
       />
       <div className="text-sm font-semibold truncate">{title}</div>
-      <div className="text-xs">{release_date}</div>
+      <div className="text-xs flex items-center gap-1">
+        <div>
+          <Image src={rating} alt="" width={13} height={13} />
+        </div>
+        <p>{vote_average}</p>
+      </div>
     </div>
   );
 };

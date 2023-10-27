@@ -1,5 +1,6 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Sheet,
   SheetContent,
@@ -9,10 +10,11 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import React from "react";
+import SearchFilm from "../SearchFilm";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center py-2 pr-5 sm:px-10">
+    <nav className="flex justify-between items-center py-2 pr-5 sm:pr-10 sm:pl-5">
       <Sheet>
         <SheetTrigger asChild className="md:hidden">
           <Button variant="ghost" size="icon" className="m-3">
@@ -36,10 +38,11 @@ const Navbar = () => {
           </ul>
         </SheetContent>
       </Sheet>
-      <div className="text-l sm:text-2xl">NOBARKAN</div>
-      <div className="mx-5">
-        <Input className="" type="text" placeholder="Search..." />
-      </div>
+      <div className="text-l font-bold sm:text-2xl">NOBARKAN</div>
+      {/* <div className="mx-5">
+        <Input className="sm:w-96" type="text" placeholder="Search..." />
+      </div> */}
+      <SearchFilm />
       <Button className="">Login</Button>
     </nav>
   );

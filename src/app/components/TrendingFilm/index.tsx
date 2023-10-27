@@ -20,7 +20,7 @@ const TrendingFilm = async () => {
               <FilmList
                 title={item.title}
                 image={item.poster_path}
-                release_date={item.release_date}
+                vote_average={item.vote_average}
               />
             </div>
           );
