@@ -13,13 +13,11 @@ import { useState, useEffect } from "react";
 
 const SearchFilm = () => {
   const router = useRouter();
-
-  const [films, setFilms] = useState([]);
   const [searchFilm, setSearchFilm] = useState("");
 
-  const fetchFilm = async () => {
-    const data = await fetch(
-      `${process.env.API_MOVIE}?query=saw&include_adult=false&language=en-US&page=1`,
+  const fetchAPI = async () => {
+    const response = await fetch(
+      `${process.env.MOVIE_SEARCH}?query=${searchFilm}`,
       {
         method: "GET",
         headers: {
@@ -28,12 +26,15 @@ const SearchFilm = () => {
         },
       }
     );
-    console.log(data.json());
+    const api = await response.json();
   };
-
   useEffect(() => {
-    fetchFilm();
+    fetchAPI;
   }, []);
+
+  const handleSearch = () => {
+    router.push("");
+  };
 
   return (
     <div className="mx-5">
@@ -41,14 +42,15 @@ const SearchFilm = () => {
         <DialogTrigger>
           <Input className="sm:w-96" type="text" placeholder="Search..." />
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="w-96 sm:w-auto">
           <DialogHeader>
             <DialogTitle>What do you want to search?</DialogTitle>
             <DialogDescription className="flex justify-between">
               <Input
-                className="sm:w-[360px]"
+                className="w-[230px] sm:w-[360px]"
                 type="text"
                 placeholder="Search..."
+                onChange={(e) => setSearchFilm(e.target.value)}
               />
               <Button>Search</Button>
             </DialogDescription>
