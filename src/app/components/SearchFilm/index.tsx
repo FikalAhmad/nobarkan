@@ -9,31 +9,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SearchFilm = () => {
   const router = useRouter();
   const [searchFilm, setSearchFilm] = useState("");
 
-  const fetchAPI = async () => {
-    const response = await fetch(
-      `${process.env.MOVIE_SEARCH}?query=${searchFilm}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
-        },
-      }
-    );
-    const api = await response.json();
-  };
-  useEffect(() => {
-    fetchAPI;
-  }, []);
-
   const handleSearch = () => {
-    router.push("");
+    router.push(`/search/${searchFilm}`);
   };
 
   return (
@@ -52,7 +35,7 @@ const SearchFilm = () => {
                 placeholder="Search..."
                 onChange={(e) => setSearchFilm(e.target.value)}
               />
-              <Button>Search</Button>
+              <Button onClick={handleSearch}>Search</Button>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

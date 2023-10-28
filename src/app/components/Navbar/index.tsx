@@ -11,6 +11,7 @@ import {
 import { Menu } from "lucide-react";
 import React from "react";
 import SearchFilm from "../SearchFilm";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -38,10 +39,9 @@ const Navbar = () => {
           </ul>
         </SheetContent>
       </Sheet>
-      <div className="text-l font-bold sm:text-2xl">NOBARKAN</div>
-      {/* <div className="mx-5">
-        <Input className="sm:w-96" type="text" placeholder="Search..." />
-      </div> */}
+      <div className="text-l font-bold sm:text-2xl">
+        <Link href="/">NOBARKAN</Link>
+      </div>
       <SearchFilm />
       <Button className="">Login</Button>
     </nav>
