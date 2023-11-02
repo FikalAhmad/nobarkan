@@ -34,7 +34,7 @@ const Sidebar = async () => {
               return (
                 <div key={item.id}>
                   <li className="py-2">
-                    <Link href={`/genre/${item.name}`}>{item.name}</Link>
+                    <Link href={`/genre/${item.id}`}>{item.name}</Link>
                   </li>
                 </div>
               );
