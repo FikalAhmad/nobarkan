@@ -1,25 +1,17 @@
-const Sidebar = () => {
-  const genres = [
-    "Action",
-    "Adventure",
-    "Animation",
-    "Comedy",
-    "Crime",
-    "Documentary",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "History",
-    "Horror",
-    "Music",
-    "Mystery",
-    "Romance",
-    "Science Fiction",
-    "TV Movie",
-    "Thriller",
-    "War",
-    "Western",
-  ];
+import Link from "next/link";
+
+const Sidebar = async () => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/genre/movie/list",
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+      },
+    }
+  );
+  const data = await response.json();
 
   return (
     <div className="hidden md:block p-5">
@@ -27,17 +19,23 @@ const Sidebar = () => {
         <div>
           <h1 className="text-xl font-semibold">Discover</h1>
           <ul className="mt-3">
-            <li className="py-2">Home</li>
-            <li className="py-2">Recommendation</li>
+            <li className="py-2">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="py-2">
+              <Link href="/recommendation">Recommendation</Link>
+            </li>
           </ul>
         </div>
         <div>
           <h1 className="text-xl font-semibold mt-5">Genres</h1>
           <ul className="mt-3">
-            {genres.map((item: any, index) => {
+            {data.genres.map((item: any) => {
               return (
-                <div key={index + 1}>
-                  <li className="py-2">{item}</li>
+                <div key={item.id}>
+                  <li className="py-2">
+                    <Link href={`/genre/${item.name}`}>{item.name}</Link>
+                  </li>
                 </div>
               );
             })}

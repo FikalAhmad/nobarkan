@@ -1,4 +1,5 @@
 import FilmList from "../FilmList";
+import HeaderTitle from "../HeaderTitle";
 
 const UpcomingFilm = async () => {
   const response = await fetch(`${process.env.API_MOVIE}/upcoming`, {
@@ -12,7 +13,7 @@ const UpcomingFilm = async () => {
 
   return (
     <div>
-      <h1 className="pl-5 py-5 text-2xl font-semibold sm:text-3xl">Upcoming</h1>
+      <HeaderTitle title="Upcoming" link="/upcoming" />
       <FilmList apiData={popular_movie} />
     </div>
   );
