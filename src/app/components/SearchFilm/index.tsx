@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 const SearchFilm = () => {
   const router = useRouter();
@@ -35,7 +36,9 @@ const SearchFilm = () => {
                 placeholder="Search..."
                 onChange={(e) => setSearchFilm(e.target.value)}
               />
-              <Button onClick={handleSearch}>Search</Button>
+              <DialogClose>
+                <Button onClick={handleSearch}>Search</Button>
+              </DialogClose>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

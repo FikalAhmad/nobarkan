@@ -29,7 +29,7 @@ const Sidebar = async () => {
         </div>
         <div>
           <h1 className="text-xl font-semibold mt-5">Genres</h1>
-          <ul className="mt-3">
+          <ul className="my-3">
             {data.genres.map((item: any) => {
               return (
                 <div key={item.id}>

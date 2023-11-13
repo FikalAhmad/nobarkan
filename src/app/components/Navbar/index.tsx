@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -62,7 +63,9 @@ const Navbar = () => {
               return (
                 <div key={item.id}>
                   <li className="py-2">
-                    <Link href={`/genre/${item.id}`}>{item.name}</Link>
+                    <SheetClose asChild>
+                      <Link href={`/genre/${item.id}`}>{item.name}</Link>
+                    </SheetClose>
                   </li>
                 </div>
               );
